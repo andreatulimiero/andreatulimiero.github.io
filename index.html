@@ -6,22 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andrea Tulimiero</title>
     <!-- CSS -->
-    <!--<link rel="stylesheet" href="css/foundation.css" />-->
     <link rel="stylesheet" href="css/app.css" />
  </head>
  <body>
    
-  <header>
+  <!-- Desktop menu -->
+  <div class="desktop">
     <div class="menu">
-      <span id="home">Home</span>
-      <span id="ethos">Ethos</span>
-      <span id="works">Works</span>
+      <div class="titles">
+        <span id="home">Home</span>
+        <span id="ethos">Ethos</span>
+        <span id="works">Works</span>
+      </div>
+      <span class="bar"></span>
     </div>
-    <span class="bar"></span>
-  </header>
+  </div>
+  <!-- Mobile menu -->
+  <div class="mobile">
+    <i id="menu-icon"><svg style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/></svg></i>
+    <div class="menu">
+      <div class="titles">
+        <span id="home">Home</span>
+        <span id="ethos">Ethos</span>
+        <span id="works">Works</span>
+      </div>
+    </div>
+  </div>
 
   <!-- JS -->
-  <!--<script src="js/vendor/jquery.js" type="text/javascript"></script>
-  <script src="js/vendor/foundation.js" type="text/javascript"></script>-->
+  <script src="js/views.js" type="text/javascript"></script>
   <script src="js/app.js" type="text/javascript"></script>
  </body>
