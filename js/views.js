@@ -42,6 +42,7 @@ function initMobileMenu(){
   });
   document.querySelector('body').addEventListener('touchmove', e => {
     if( !menu.classList.contains('opened') ) return;
+    menu.style.transition = 'none';
     deltaX = parseInt( e.touches[0].pageX ) - startX;
     if( deltaX >= 0 ) return;
     menu.style.transform = 'translateX('+ deltaX +'px)';
@@ -49,6 +50,7 @@ function initMobileMenu(){
   document.querySelector('body').addEventListener('touchend', e => {
     if( !menu.classList.contains('opened') ) return;
     menu.style.transform = '';
+    menu.style.transition = '';
     if( deltaX < -150 )
       menu.classList.remove('opened');
   });
