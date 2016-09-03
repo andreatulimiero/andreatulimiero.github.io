@@ -1,5 +1,5 @@
 /* Fonts */
-/*@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i';*/
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400';
 
 html, body{
   margin: 0;
@@ -20,6 +20,13 @@ html, body{
 
 /* Menu */
   /* Desktop */
+header{}
+
+@media (min-width: 768px){
+  header{
+    background-color: #009688;
+  }
+}
 
 .desktop .menu{
   width: 40%;
@@ -28,7 +35,17 @@ html, body{
   flex-direction: column;
 }
 
-.desktop .titles{
+.desktop .menu .profile-menu-image{
+  position: absolute;
+}
+
+.desktop .menu .profile-menu-image img{
+  height: 90%;
+  width: auto;
+  border-radius: 50%;
+}
+
+.desktop .menu .titles{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -36,37 +53,44 @@ html, body{
 
 .desktop .menu .titles span{
   padding: 16px;
+  color: white;
   font-size: large;
   cursor: pointer;
   transition: color .2s ease-out, background-color .4s ease-out;
 }
 
-.desktop .menu .titles span:hover{
-  color: darkkhaki;
+.desktop .menu .titles span:hover, .desktop .menu .titles span.selected{
+  color: #1DE9B6;
 }
 
 .desktop .menu .titles span:active{
-  background-color: lightgrey;
+  color: white;
 }
 
 .desktop .menu .titles + .bar{
   display: inline-block;
   position: relative;
-  height: 2px;
+  height: 4px;
   width: 0;
-  background-color: grey;
+  border-radius: 3px;
+  background-color: #1DE9B6;
   will-change: transform;
   transition: transform .4s ease-out;
 }
   /* Mobile */
 .mobile{
+  z-index: 4;
+  position: fixed;
   height: 100%;
+  width: 80%;
 }
 
 .mobile #menu-icon{
   position: fixed;
   top: 16px;
   left: 16px;
+  width: 26px;
+  height: 26px;
 }
 
 .mobile #menu-icon svg{
@@ -74,15 +98,19 @@ html, body{
   width: 26px;
 }
 
+.mobile #menu-icon svg path{
+  fill: #009688;
+}
+
 .mobile .menu{
-  width: 80%;
+  width: 100%;
   height: 100%;
   padding: 16px;
   background-color: white;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   transform: translateX(-105%);
   will-change: transform;
-  transition: transform .4s ease-out;
+  transition: transform .4s ease-in-out;
 }
 
 .mobile .menu.opened{
@@ -103,3 +131,125 @@ html, body{
 .mobile .menu .titles span:active{
   background-color: lightgrey;
 }
+
+/* Article */
+  /* Home */
+article{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  background-color: #1DE9B6;
+}
+
+@media (max-width: 767px){
+  article:first-of-type{
+    padding-top: 50px;
+  }
+}
+
+@media (min-width: 767px){ 
+  article .container  section h2, article .container section h3{
+    font-weight: 400;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+article.home .container {
+  z-index: 2;
+  width: 90%;
+  height: calc( 100% + 32px );
+  max-width: 1800px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px){
+  article.home .container {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0; 
+  }
+}
+
+article.home .container  section{
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+article.home .container section .profile-image{
+  margin: 16px;
+  height: 64px;
+  background-position: center;
+  background-size: contain;
+}
+
+article.home .container section.profile-description{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+article.home .container section h2, article.home .container section h3{
+  margin-top: 0;
+}
+
+article.home .container section h5, article.home .container section h6{
+  color: #009688;
+  max-width: 800px;
+  line-height: 2em;
+}
+
+  /* Ethos */
+article.ethos{
+  background-color: #607D8B;
+}
+
+article.ethos .container{
+  z-index: 1;
+  width: 90%;
+  max-width: 1800px;
+  padding: 8px; 
+  padding-top: 32px;
+}
+
+article.ethos .container h2, article.ethos .container h5{
+  color: white;
+}
+
+  /* Works */
+article.works{
+  background-color: white;
+}
+
+article.works .container{
+  width: 90%;
+  max-width: 1800px;
+}
+
+/* Elements */
+.card{
+  overflow: hidden;
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.profile-image{
+  background-image: url('../res/profile-placeholder.png');
+  background-repeat: no-repeat;
+}
+
+.bg-blue-grey{
+  background-color: #607D8B; 
+}
+
+.bg-light-grey{
+  background-color: #8BC34A;
+}
+
+.card.radius-bottom-only{
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;  
+}
+

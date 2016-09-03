@@ -7,11 +7,16 @@ function initMenu(){
 }
 
 function initDesktopMenu(){
-  var titles = document.querySelector('.desktop .titles');
-  var bar = document.querySelector('.desktop .titles + .bar');
+  var menu = document.querySelector('.desktop .menu');
+  var profileImage = document.querySelector('.desktop .menu .profile-menu-image');
+  // profileImage.style.height = window.getComputedStyle(menu).height;
+  var titles = document.querySelector('.desktop .menu .titles');
+  var bar = document.querySelector('.desktop .menu .titles + .bar');
   bar.style.width = titles.querySelector('span').offsetWidth + 'px';
   titles.querySelectorAll('span').forEach( titlesItem => {
-    titlesItem.addEventListener('click', e => {
+    titlesItem.addEventListener('click', e => { 
+        menu.querySelector('.titles .selected').classList.remove('selected');
+      e.target.classList.add('selected');
       if( e.target.id == 'home' ){
         bar.style.transform = 'translateX(0)';
       } else {
@@ -63,6 +68,7 @@ function initMobileMenu(){
   });
 }
 
+/* Views Utils */
 function checkHit(event, target){
   for( var element = event.target; element.tagName != 'HTML'; element = element.parentNode ){
     if( element == target )
