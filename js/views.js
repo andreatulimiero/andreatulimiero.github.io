@@ -68,6 +68,16 @@ function initMobileMenu(){
   });
 }
 
+/* Works */
+function initWorks(){
+  var worksContainers = document.querySelectorAll('article.works .works-container .work-container');
+  if( worksContainers.length == 0 ) return;
+  worksContainers.forEach( workContainer => {
+    var width = window.getComputedStyle(workContainer).width;
+    workContainer.style.height = width;
+  });
+}
+
 /* Views Utils */
 function checkHit(event, target){
   for( var element = event.target; element.tagName != 'HTML'; element = element.parentNode ){

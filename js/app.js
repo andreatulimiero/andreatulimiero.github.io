@@ -8,4 +8,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function initViews(){
  initMenu(); 
+
+ initWorks();
 }
