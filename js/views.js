@@ -31,12 +31,23 @@ function initDesktopMenu(){
 function initMobileMenu(){
   var menuIcon = document.querySelector('#menu-icon');
   var menu = document.querySelector('.mobile .menu');
+  var topBar = document.querySelector('.mobile .top-bar');
+  var topBarThreshold = document.querySelector('.home section:first-of-type').offsetTop;
   menuIcon.addEventListener('click', e => {
     if( menu.classList.contains('opened') )
       menu.classList.remove('opened');
     else
       menu.classList.add('opened');
   });
+  // Top fixed menu
+  document.addEventListener('scroll', e => {
+    if( document.querySelector('body').scrollTop <= topBarThreshold ) {
+      topBar.classList.add('idle');
+      return;
+    }
+    topBar.classList.remove('idle');
+  });
+  // Sliding menu
   document.querySelector('body').addEventListener('click', e => {
     if( !checkHit(e, menu) && !checkHit(e, menuIcon) )
       menu.classList.remove('opened');

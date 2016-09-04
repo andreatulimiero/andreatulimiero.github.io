@@ -55,6 +55,7 @@ header{}
   padding: 16px;
   color: white;
   font-size: large;
+  letter-spacing: 2px;
   cursor: pointer;
   transition: color .2s ease-out, background-color .4s ease-out;
 }
@@ -85,10 +86,25 @@ header{}
   width: 80%;
 }
 
-.mobile #menu-icon{
+.mobile .top-bar{
   position: fixed;
-  top: 16px;
-  left: 16px;
+  width: calc( 100% - 32px );
+  height: 26px;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.19);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 16px;
+  transition: background-color .2s ease-out, box-shadow .2s linear;
+}
+
+.mobile .top-bar.idle{
+  background: inherit;
+  box-shadow: none;
+}
+
+.mobile .top-bar #menu-icon{
   width: 26px;
   height: 26px;
 }
@@ -100,6 +116,19 @@ header{}
 
 .mobile #menu-icon svg path{
   fill: #009688;
+}
+
+.mobile .top-bar .profile-image{
+  position: relative;
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  background-size: contain;
+  transition: transform .3s ease-out;
+}
+
+.mobile .top-bar.idle .profile-image{
+  transform: translateX(50px);
 }
 
 .mobile .menu{
@@ -140,13 +169,15 @@ article{
   background-color: #1DE9B6;
 }
 
-@media (max-width: 767px){
-  article{
-    height: 85%;
-  }
 
+article .container  section h2, article .container section h3{
+  width: 100%;
+  text-align: left;
+}
+
+@media (max-width: 767px){
   article:first-of-type{
-    padding-top: 50px;
+    padding-top: 60px;
   }
 }
 
@@ -155,10 +186,9 @@ article .container section h5{
   font-weight: 400;
 }
 
-@media (min-width: 767px){ 
+@media (min-width: 768px){ 
   article .container  section h2, article .container section h3{
     font-weight: 400;
-    width: 100%;
     text-align: center;
   }
 }
@@ -170,6 +200,12 @@ article.home .container {
   max-width: 1800px;
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 767px){
+  article.home{
+    height: 85%;
+  }
 }
 
 @media (min-width: 768px){
