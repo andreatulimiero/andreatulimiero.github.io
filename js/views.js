@@ -9,21 +9,24 @@ function initMenu(){
 function initDesktopMenu(){
   var menu = document.querySelector('.desktop .menu');
   var titles =  menu.querySelector('.titles');
-  var bar = menu.querySelector('.titles + .bar');
+  var bar = menu.querySelector('.bar');
   var barStartX = parseInt( window.getComputedStyle(titles).marginLeft );
   bar.style.width = titles.querySelector('span').offsetWidth + 'px';
-        bar.style.transform = 'translateX(+'+ barStartX +'px)';
+        bar.style.left = barStartX +'px';
   titles.querySelectorAll('span').forEach( titlesItem => {
     titlesItem.addEventListener('click', e => { 
-        menu.querySelector('.titles .selected').classList.remove('selected');
+      titles.querySelector('.selected').classList.remove('selected');
       e.target.classList.add('selected');
+      var target = '';
       if( e.target.classList.contains('home') ){
-        bar.style.transform = 'translateX(+'+ barStartX +'px)';
+        bar.style.transform = 'translateX(0)';
+        target = 'home';
       } else {
-        var headerLeft = 
-          parseInt(window.getComputedStyle(titles).marginLeft);
-        bar.style.transform = 'translateX('+ (e.target.offsetLeft + barStartX - headerLeft) +'px)';
+        bar.style.transform = 'translateX('+ (e.target.offsetLeft - barStartX) +'px)';
+        if( e.target.classList.contains('ethos') ) target = 'ethos';
+        else if( e.target.classList.contains('works') ) target = 'works';
       }
+      smoothScrollTo( document.querySelector('article.' + target) );
     });
   });
 }
@@ -31,6 +34,7 @@ function initDesktopMenu(){
 function initMobileMenu(){
   var menuIcon = document.querySelector('#menu-icon');
   var menu = document.querySelector('.mobile .side-menu');
+  var titles = menu.querySelector('.mobile .side-menu .titles');
   var topBar = document.querySelector('.mobile .top-bar');
   var topBarThreshold = document.querySelector('.home section:first-of-type').offsetTop;
   menuIcon.addEventListener('click', e => {
@@ -76,11 +80,13 @@ function initMobileMenu(){
       if( document.querySelector('body').scrollTop > topBarThreshold ) topBar.classList.remove('idle');
     }
   });
-  menu.querySelectorAll('.titles span').forEach( title => {
+  titles.querySelectorAll('span').forEach( title => {
     title.addEventListener('click', e => {
-      if( e.target.id == 'home' ) console.log('Home');
-      else if( e.target.id == 'ethos' ) console.log('Ethos');
-      else if( e.target.id == 'works' ) console.log('Works');
+      var target = '';
+      if( e.target.classList.contains('home') ) target = 'home';
+      else if( e.target.classList.contains('ethos') ) target = 'ethos';
+      else if( e.target.classList.contains('works') ) target = 'works';
+      smoothScrollTo( document.querySelector('article.' + target) );
     });
   });
 }
@@ -102,4 +108,22 @@ function checkHit(event, target){
       return true;
   }
   return false;
+}
+
+function scrollTo(target){
+  var body = document.querySelector('body');
+  var scrollDelta = target.offsetTop - body.scrollTop;
+  body.scrollTop = scrollDelta;
+}
+
+function smoothScrollTo(target){
+  var body = document.querySelector('body');
+  var menuHeight = 0;
+  if( mobileDevice )
+    menuHeight = parseInt( window.getComputedStyle( document.querySelector('.mobile .top-bar') ).height);
+  else 
+    menuHeight = parseInt( window.getComputedStyle( document.querySelector('.desktop .menu') ).height);
+  var scrollDelta = target.offsetTop - (menuHeight + body.scrollTop);
+  // Implement smooth scroll option
+  body.scrollTop = body.scrollTop + scrollDelta;
 }
