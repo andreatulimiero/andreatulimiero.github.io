@@ -37,13 +37,17 @@ function initMobileMenu(){
   var titles = menu.querySelector('.mobile .side-menu .titles');
   var topBar = document.querySelector('.mobile .top-bar');
   var topBarThreshold = document.querySelector('.home section:first-of-type').offsetTop;
+  var openMenu = function () {
+    menu.classList.add('opened');
+    topBar.classList.add('idle');
+  };
+  var closeMenu = function(){ 
+    menu.classList.remove('opened');
+    if( document.querySelector('body').scrollTop > topBarThreshold ) topBar.classList.remove('idle');
+  };
   menuIcon.addEventListener('click', e => {
-    if( menu.classList.contains('opened') )
-      menu.classList.remove('opened');
-    else{
-      menu.classList.add('opened');
-      topBar.classList.add('idle');
-    }
+    if( menu.classList.contains('opened') ) closeMenu();
+    else openMenu();
   });
   // Top fixed menu
   document.addEventListener('scroll', e => {
@@ -55,10 +59,7 @@ function initMobileMenu(){
   });
   // Sliding menu
   document.querySelector('body').addEventListener('click', e => {
-    if( !checkHit(e, menu) && !checkHit(e, menuIcon) ){
-      menu.classList.remove('opened');
-      if( document.querySelector('body').scrollTop > topBarThreshold ) topBar.classList.remove('idle');
-    }
+    if( !checkHit(e, menu) && !checkHit(e, menuIcon) ) closeMenu();
   });
   var startX, deltaX;
   document.querySelector('body').addEventListener('touchstart', e => {
@@ -75,10 +76,7 @@ function initMobileMenu(){
     if( !menu.classList.contains('opened') ) return;
     menu.style.transform = '';
     menu.style.transition = '';
-    if( deltaX < -150 ){
-      menu.classList.remove('opened');
-      if( document.querySelector('body').scrollTop > topBarThreshold ) topBar.classList.remove('idle');
-    }
+    if( deltaX < -150 ) closeMenu();
   });
   titles.querySelectorAll('span').forEach( title => {
     title.addEventListener('click', e => {
@@ -87,6 +85,7 @@ function initMobileMenu(){
       else if( e.target.classList.contains('ethos') ) target = 'ethos';
       else if( e.target.classList.contains('works') ) target = 'works';
       smoothScrollTo( document.querySelector('article.' + target) );
+      closeMenu();
     });
   });
 }
