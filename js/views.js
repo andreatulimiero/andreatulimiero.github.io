@@ -8,21 +8,21 @@ function initMenu(){
 
 function initDesktopMenu(){
   var menu = document.querySelector('.desktop .menu');
-  var profileImage = document.querySelector('.desktop .menu .profile-menu-image');
-  // profileImage.style.height = window.getComputedStyle(menu).height;
-  var titles = document.querySelector('.desktop .menu .titles');
-  var bar = document.querySelector('.desktop .menu .titles + .bar');
+  var titles =  menu.querySelector('.titles');
+  var bar = menu.querySelector('.titles + .bar');
+  var barStartX = parseInt( window.getComputedStyle(titles).marginLeft );
   bar.style.width = titles.querySelector('span').offsetWidth + 'px';
+        bar.style.transform = 'translateX(+'+ barStartX +'px)';
   titles.querySelectorAll('span').forEach( titlesItem => {
     titlesItem.addEventListener('click', e => { 
         menu.querySelector('.titles .selected').classList.remove('selected');
       e.target.classList.add('selected');
-      if( e.target.id == 'home' ){
-        bar.style.transform = 'translateX(0)';
+      if( e.target.classList.contains('home') ){
+        bar.style.transform = 'translateX(+'+ barStartX +'px)';
       } else {
         var headerLeft = 
-          parseInt(window.getComputedStyle(document.querySelector('.desktop .menu')).marginLeft);
-        bar.style.transform = 'translateX('+ (e.target.offsetLeft - headerLeft) +'px)';
+          parseInt(window.getComputedStyle(titles).marginLeft);
+        bar.style.transform = 'translateX('+ (e.target.offsetLeft + barStartX - headerLeft) +'px)';
       }
     });
   });
@@ -30,14 +30,16 @@ function initDesktopMenu(){
 
 function initMobileMenu(){
   var menuIcon = document.querySelector('#menu-icon');
-  var menu = document.querySelector('.mobile .menu');
+  var menu = document.querySelector('.mobile .side-menu');
   var topBar = document.querySelector('.mobile .top-bar');
   var topBarThreshold = document.querySelector('.home section:first-of-type').offsetTop;
   menuIcon.addEventListener('click', e => {
     if( menu.classList.contains('opened') )
       menu.classList.remove('opened');
-    else
+    else{
       menu.classList.add('opened');
+      topBar.classList.add('idle');
+    }
   });
   // Top fixed menu
   document.addEventListener('scroll', e => {
@@ -49,8 +51,10 @@ function initMobileMenu(){
   });
   // Sliding menu
   document.querySelector('body').addEventListener('click', e => {
-    if( !checkHit(e, menu) && !checkHit(e, menuIcon) )
+    if( !checkHit(e, menu) && !checkHit(e, menuIcon) ){
       menu.classList.remove('opened');
+      if( document.querySelector('body').scrollTop > topBarThreshold ) topBar.classList.remove('idle');
+    }
   });
   var startX, deltaX;
   document.querySelector('body').addEventListener('touchstart', e => {
@@ -67,8 +71,10 @@ function initMobileMenu(){
     if( !menu.classList.contains('opened') ) return;
     menu.style.transform = '';
     menu.style.transition = '';
-    if( deltaX < -150 )
+    if( deltaX < -150 ){
       menu.classList.remove('opened');
+      if( document.querySelector('body').scrollTop > topBarThreshold ) topBar.classList.remove('idle');
+    }
   });
   menu.querySelectorAll('.titles span').forEach( title => {
     title.addEventListener('click', e => {
