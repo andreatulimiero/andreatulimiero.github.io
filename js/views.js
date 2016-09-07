@@ -37,7 +37,6 @@ function initDesktopMenu(){
       else if( articleTitle.classList.contains('works') ) target = 'works';
     }
   };
-  console.log(titles.querySelectorAll('span'));
   titles.querySelectorAll('span').forEach( titlesItem => {
     titlesItem.addEventListener('click', e => {
       menu.selectArticle(e.target);
@@ -48,9 +47,9 @@ function initDesktopMenu(){
 function initMobileMenu(){
   var menuIcon = document.querySelector('#menu-icon');
   var menuElement = document.querySelector('.mobile .side-menu');
-  menu.height = parseInt( window.getComputedStyle(menuElement).height );
   var titles = menuElement.querySelector('.mobile .side-menu .titles');
   var topBar = document.querySelector('.mobile .top-bar');
+  menu.height = parseInt( window.getComputedStyle(topBar).height );
   var topBarThreshold = document.querySelector('.home section:first-of-type').offsetTop;
   var openMenu = function () {
     menuElement.classList.add('opened');
@@ -121,7 +120,6 @@ function initArticles(){
     }
   };
   window.addEventListener('scroll', e => {
-    console.log(pageIsScrolling);
     if( pageIsScrolling ) return;
     if( scrollUpdate.isHanging ) return;
     scrollUpdate.hang();
@@ -132,7 +130,7 @@ function initArticles(){
     else 
       menu.highlightTitle( document.querySelector('.titles .home') );
     
-  });
+  }, {passive: true});
 }
 
 /* Single articles */
@@ -188,5 +186,6 @@ function smoothScrollTo(target){
     iteration++;
     requestAnimationFrame(scroll);
   }
+  debugger;
   animationFrameId = requestAnimationFrame(scroll);
 }

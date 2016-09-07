@@ -209,7 +209,7 @@ article .container  section h2, article .container section h3{
 
 @media (max-width: 767px){
   article:first-of-type{
-    padding-top: 60px;
+    padding-top: 58px;
   }
 }
 
@@ -273,7 +273,6 @@ article.home .container section h5{
 
   /* Ethos */
 article.ethos{
-  height: 40%;
   background-color: #607D8B;
 }
 
