@@ -1,4 +1,5 @@
 // Polyfills
+    // raF
 (function() {
     // requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
     var lastTime = 0;
@@ -24,6 +25,9 @@
             clearTimeout(id);
         };
 }());
+    // Nodelist forEach
+    if( NodeList.prototype.forEach == undefined )
+        NodeList.prototype.forEach = Array.prototype.forEach;
 // Easing
 Math.easeInOutSine = function (t, b, c, d) {
 	return -c/2 * (Math.cos(Math.PI*t/d) - 1) + b;

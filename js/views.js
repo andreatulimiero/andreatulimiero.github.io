@@ -22,7 +22,7 @@ function initDesktopMenu(){
   bar.style.left = barStartX +'px';
   menu.selectArticle = articleTitle => {
     menu.highlightTitle(articleTitle);
-    smoothScrollTo( document.querySelector('article.' + articleTitle.getAttribute('article')) );
+    smoothScrollTo( document.querySelector('article.' + articleTitle.dataset.article) );
   };
   menu.highlightTitle = articleTitle => {
     titles.querySelector('.selected').classList.remove('selected');
@@ -37,6 +37,7 @@ function initDesktopMenu(){
       else if( articleTitle.classList.contains('works') ) target = 'works';
     }
   };
+  console.log(titles.querySelectorAll('span'));
   titles.querySelectorAll('span').forEach( titlesItem => {
     titlesItem.addEventListener('click', e => {
       menu.selectArticle(e.target);
@@ -60,15 +61,11 @@ function initMobileMenu(){
     if( document.querySelector('body').scrollTop > topBarThreshold ) topBar.classList.remove('idle');
   };
   menu.selectArticle = articleTitle => {
-    var target = '';
-    if( article.classList.contains('home') ) target = 'home';
-    else if( article.classList.contains('ethos') ) target = 'ethos';
-    else if( article.classList.contains('works') ) target = 'works';
-    smoothScrollTo( document.querySelector('article.' + articleTitle.getAttribute('article')) );
+    smoothScrollTo( document.querySelector('article.' + articleTitle.dataset.article) );
     closeMenu();
   };
   menu.highlightTitle = articleTitle => {
-    article.style.fontWeight = 'bold';
+    articleTitle.style.fontWeight = 'bold';
   };
   menuIcon.addEventListener('click', e => {
     if( menuElement.classList.contains('opened') ) closeMenu();
@@ -116,7 +113,7 @@ function initArticles(){
   var scrollUpdate = {
     isHanging: false,
     intervalId: undefined,
-    waitTime: 300,
+    waitTime: 100,
     hang: function() {
       mThis = this; 
       mThis.isHanging = true;
@@ -124,9 +121,10 @@ function initArticles(){
     }
   };
   window.addEventListener('scroll', e => {
+    console.log(pageIsScrolling);
+    if( pageIsScrolling ) return;
     if( scrollUpdate.isHanging ) return;
     scrollUpdate.hang();
-    if( pageIsScrolling ) return;
     if( window.scrollY >= document.querySelector('article.works').offsetTop - menu.height ) 
       menu.highlightTitle( document.querySelector('.titles .works') );
     else if ( window.scrollY >= document.querySelector('article.ethos').offsetTop - menu.height ) 
@@ -173,10 +171,10 @@ var pageIsScrolling = false;
 var animationFrameId;
 function smoothScrollTo(target){
   if( pageIsScrolling ) cancelAnimationFrame(animationFrameId);
+  pageIsScrolling = true;
   var body = document.querySelector('body');
   var scrollDelta = target.offsetTop - (menu.height + body.scrollTop);
   if( !scrollDelta ) return;
-  pageIsScrolling = true;
   var iteration = 0;
   var from = body.scrollTop;
   duration = 18;
