@@ -230,21 +230,9 @@ article.home .container {
   width: 90%;
   height: calc( 100% + 32px );
   max-width: 1800px;
-  display: flex;
-  flex-direction: column;
-}
-
-@media (max-width: 767px){
-  article.home{
-    height: 85%;
-  }
 }
 
 @media (min-width: 768px){
-  article.home{
-    height: 40%;
-  }
-
   article.home .container {
   border-top-right-radius: 0;
   border-top-left-radius: 0; 

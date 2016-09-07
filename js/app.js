@@ -31,6 +31,7 @@ Math.easeInOutSine = function (t, b, c, d) {
 
 // Media rules
 var mobileDevice = true;
+
 document.addEventListener("DOMContentLoaded", function() {
   if( parseInt(window.innerWidth) > 767 ) mobileDevice = false;
   registerAnalytics();
@@ -40,8 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function initViews(){
  initMenu(); 
-
- initWorks();
+ initArticles();
 }
 
 function registerAnalytics(){

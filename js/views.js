@@ -93,7 +93,20 @@ function initMobileMenu(){
   });
 }
 
-/* Works */
+function initArticles(){
+  initHome();
+  initWorks();
+}
+
+/* Single articles */
+function initHome(){
+  var article = document.querySelector('article.home');
+  article.style.height = window.getComputedStyle(article).height;
+  var articleContent = article.querySelector('.container');
+  articleContent.style.height = Utils.toPx( parseFloat(article.height) + 32 );
+  console.log('Article: ' + article.height + ' | Container: ' + articleContent.height);
+}
+
 function initWorks(){
   var worksContainers = document.querySelectorAll('article.works .works-container .work-container');
   if( worksContainers.length == 0 ) return;
@@ -104,6 +117,12 @@ function initWorks(){
 }
 
 /* Views Utils */
+var Utils = {
+  toPx: pixels => {
+    return pixels + 'px';
+  }
+}
+
 function checkHit(event, target){
   for( var element = event.target; element.tagName != 'HTML'; element = element.parentNode ){
     if( element == target )
@@ -125,12 +144,6 @@ function smoothScrollTo(target){
   pageIsScrolling = true;
   var iteration = 0;
   var from = body.scrollTop;
-  var duration = {
-    time: 0,
-    getFrames: function(){
-      this.time * 60;
-    }
-  };
   duration = 18;
   var scroll = function() {
     if( iteration >= duration ) {
