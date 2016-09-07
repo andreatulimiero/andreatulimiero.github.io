@@ -123,6 +123,20 @@ function smoothScrollTo(target){
   else 
     menuHeight = parseInt( window.getComputedStyle( document.querySelector('.desktop .menu') ).height);
   var scrollDelta = target.offsetTop - (menuHeight + body.scrollTop);
-  // Implement smooth scroll option
-  body.scrollTop = body.scrollTop + scrollDelta;
+  if(scrollDelta == 0) return;
+  var i = 0;
+  var animateId ;
+  var scroll = function() {
+    requestAnimationFrame(scroll);
+    if( Math.abs(i) >= Math.abs(scrollDelta) ) {
+      cancelAnimationFrame(animateId);
+      return;
+    }
+    if(scrollDelta > 0)
+      body.scrollTop++;
+    else 
+      body.scrollTop--;
+    i++;
+  }
+  animateId = requestAnimationFrame(scroll);
 }
