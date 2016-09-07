@@ -1,4 +1,7 @@
 /* Menu */
+var pageIsScrolling = false;
+var animationFrameId;
+
 function initMenu(){
   if( mobileDevice )
     initMobileMenu();
@@ -109,13 +112,8 @@ function checkHit(event, target){
   return false;
 }
 
-function scrollTo(target){
-  var body = document.querySelector('body');
-  var scrollDelta = target.offsetTop - body.scrollTop;
-  body.scrollTop = scrollDelta;
-}
-
 function smoothScrollTo(target){
+  if( pageIsScrolling ) cancelAnimationFrame(animationFrameId);
   var body = document.querySelector('body');
   var menuHeight = 0;
   if( mobileDevice )
@@ -123,20 +121,25 @@ function smoothScrollTo(target){
   else 
     menuHeight = parseInt( window.getComputedStyle( document.querySelector('.desktop .menu') ).height);
   var scrollDelta = target.offsetTop - (menuHeight + body.scrollTop);
-  if(scrollDelta == 0) return;
-  var i = 0;
-  var animateId ;
+  if( !scrollDelta ) return;
+  pageIsScrolling = true;
+  var iteration = 0;
+  var from = body.scrollTop;
+  var duration = {
+    time: 0,
+    getFrames: function(){
+      this.time * 60;
+    }
+  };
+  duration = 18;
   var scroll = function() {
-    requestAnimationFrame(scroll);
-    if( Math.abs(i) >= Math.abs(scrollDelta) ) {
-      cancelAnimationFrame(animateId);
+    if( iteration >= duration ) {
+      body.scrollTop = from + scrollDelta;
       return;
     }
-    if(scrollDelta > 0)
-      body.scrollTop++;
-    else 
-      body.scrollTop--;
-    i++;
+    body.scrollTop = Math.easeInOutSine(iteration, from , scrollDelta, duration);
+    iteration++;
+    requestAnimationFrame(scroll);
   }
-  animateId = requestAnimationFrame(scroll);
+  animationFrameId = requestAnimationFrame(scroll);
 }
