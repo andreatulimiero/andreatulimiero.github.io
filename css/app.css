@@ -332,6 +332,12 @@ article.works .container .works-container .work-container .work{
   margin-top: 10%;
   margin-left: 10%;
   background: teal;
+  transition: all .4s ease-out;
+}
+
+article.works .container .works-container .work-container .work.hidden{
+  opacity: 0;
+  transform: translateY(64px);
 }
 
 /* Elements */

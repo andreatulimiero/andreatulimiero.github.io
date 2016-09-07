@@ -106,6 +106,7 @@ function initMobileMenu(){
   });
 }
 
+/* Articles */
 function initArticles(){
   initHome();
   initWorks();
@@ -130,10 +131,10 @@ function initArticles(){
     else 
       menu.highlightTitle( document.querySelector('.titles .home') );
     
-  }, {passive: true});
+  }, {passive: false});
 }
 
-/* Single articles */
+  /* Single articles */
 function initHome(){
   var article = document.querySelector('article.home');
   article.style.height = window.getComputedStyle(article).height;
@@ -142,12 +143,34 @@ function initHome(){
 }
 
 function initWorks(){
-  var worksContainers = document.querySelectorAll('article.works .works-container .work-container');
-  if( worksContainers.length == 0 ) return;
-  worksContainers.forEach( workContainer => {
+  var worksContainer = document.querySelectorAll('article.works .works-container .work-container');
+  if( !worksContainer.length ) return;
+  var worksRevealer = {
+    works: [],
+    shouldCheck: true,
+    checkReveal : function() {
+      if( !this.shouldCheck ) return;
+      this.works.forEach( work => {
+        this.shouldCheck = false;
+        if(work.classList.contains('hidden')){
+          this.shouldCheck = true;
+          var offsetTop = work.offsetTop;
+          var height = parseInt( window.getComputedStyle(work).height );
+          var visibleArea = window.innerHeight + window.scrollY;
+          if( visibleArea > offsetTop + height/3 ){
+            work.classList.remove('hidden');
+          }
+        }
+      });
+    }
+  };
+  worksContainer.forEach( workContainer => {
     var width = window.getComputedStyle(workContainer).width;
     workContainer.style.height = width;
+    worksRevealer.works.push(workContainer.querySelector('.work'));
   });
+  worksRevealer.checkReveal();
+  window.addEventListener('scroll', e => { worksRevealer.checkReveal(); }, {'passive': true});
 }
 
 /* Views Utils */
@@ -186,6 +209,5 @@ function smoothScrollTo(target){
     iteration++;
     requestAnimationFrame(scroll);
   }
-  debugger;
   animationFrameId = requestAnimationFrame(scroll);
 }
