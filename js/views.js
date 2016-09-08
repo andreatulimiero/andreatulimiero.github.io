@@ -6,7 +6,7 @@ var menu = {
 }
 
 function initMenu(){
-  mobileDevice ? initMobileMenu() : initDesktopMenu;
+  mobileDevice ? initMobileMenu() : initDesktopMenu();
 }
 
 function initDesktopMenu(){
@@ -155,6 +155,10 @@ function initWorks(){
           var height = parseInt( window.getComputedStyle(work).height );
           var visibleArea = window.innerHeight + window.scrollY;
           if( visibleArea > offsetTop + height/3 ){
+            var offsetLeft = work.offsetLeft;
+            var width = parseFloat( window.getComputedStyle(work).height );
+            var position = parseInt( offsetLeft / width );
+            work.style.transitionDelay = Utils.toSeconds( position * .1 );
             work.classList.remove('hidden');
           }
         }
@@ -174,6 +178,9 @@ function initWorks(){
 var Utils = {
   toPx: pixels => {
     return pixels + 'px';
+  },
+  toSeconds: seconds => {
+    return seconds + 's';
   }
 }
 
