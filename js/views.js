@@ -6,10 +6,7 @@ var menu = {
 }
 
 function initMenu(){
-  if( mobileDevice )
-    initMobileMenu();
-  else
-    initDesktopMenu();
+  mobileDevice ? initMobileMenu() : initDesktopMenu;
 }
 
 function initDesktopMenu(){
