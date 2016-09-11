@@ -1,12 +1,12 @@
 // Media rules
 var mobileDevice = true;
 
-document.addEventListener("DOMContentLoaded", function() {
+window.onload = e => {
   if( parseInt(window.innerWidth) > 767 ) mobileDevice = false;
   registerAnalytics();
 
   initViews();
-});
+};
 
 function initViews(){
  initMenu(); 
