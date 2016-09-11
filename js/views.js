@@ -5,6 +5,13 @@ var menu = {
   highlightTitle: undefined
 }
 
+function OnPageLoadFinished(){
+  document.querySelectorAll('.loading-idle').forEach( item => {
+    item.classList.remove('loading-idle');
+  });
+  document.querySelector('body').removeChild(document.querySelector('.splash-container'));
+}
+
 function initMenu(){
   mobileDevice ? initMobileMenu() : initDesktopMenu();
 }
@@ -135,7 +142,6 @@ function initArticles(){
 function initHome(){
   var article = document.querySelector('article.home');
   var articleContainer = article.querySelector('.container');
-  console.log(window.getComputedStyle(articleContainer).height);
   article.style.height = window.getComputedStyle(articleContainer).height;
   articleContainer.style.height = Utils.toPx( parseFloat(article.style.height) + (mobileDevice ? 32 : 64) );
 }

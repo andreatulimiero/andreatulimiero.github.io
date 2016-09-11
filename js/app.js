@@ -11,6 +11,7 @@ window.onload = e => {
 function initViews(){
  initMenu(); 
  initArticles();
+ OnPageLoadFinished();
 }
 
 function registerAnalytics(){

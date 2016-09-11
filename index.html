@@ -21,117 +21,123 @@
     <script sync src="js/app.js" type="text/javascript"></script>
  </head>
  <body>
-   <header>
-    <!-- Desktop menu -->
-    <div class="desktop">
-      <div class="menu">
-        <div class="titles">
-          <span class="home selected" data-article="home">Home</span>
-          <span class="ethos" data-article="ethos">Ethos</span>
-          <span class="works" data-article="works">Works</span>
-        </div>
-        <span class="bar"></span>
-      </div>
-    </div>
-    <!-- Mobile menu -->
-    <div class="mobile">
-      <div class="top-bar idle">
-        <div class="background"></div>
-        <i id="menu-icon">
-          <svg version="1.1" viewbox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/></svg>
-        </i>     
-        <div class="profile-image"></div>   
-      </div>
-      <div class="side-menu">
-        <div class="profile-container">
-          <div class="profile-image"></div>
-          <span>Andrea Tulimiero</span>
-        </div>
-        <div class="titles">
-          <span class="home" data-article="home">Home</span>
-          <span class="ethos" data-article="ethos">Ethos</span>
-          <span class="works" data-article="works">Works</span>
+   <div class="splash-container loading-idle">
+     <div class="splash-element-bg">
+      <div class="splash-element"></div>
+     </div>
+   </div>
+   <div class="main-container loading-idle">
+    <header>
+      <!-- Desktop menu -->
+      <div class="desktop">
+        <div class="menu">
+          <div class="titles">
+            <span class="home selected" data-article="home">Home</span>
+            <span class="ethos" data-article="ethos">Ethos</span>
+            <span class="works" data-article="works">Works</span>
+          </div>
+          <span class="bar"></span>
         </div>
       </div>
-    </div>
-  </header>
-
-  <article class="home">
-    <div class="container card">
-      <section>
-        <div class="profile-image"></div>
-      </section>
-      <section class="profile-description">
-        <h2>Who I am</h2>
-        <h5>
-          My name is <strong class="name">Andrea Tulimiero</strong>, and I'm a <strong>19</strong>-year-old guy located in Rome.<br/>
-          I could be what I study, so a <strong>Computer Engineer</strong>, or what 
-          I'm passionate about, hence a <strong>Full-Stack web</strong> and <strong>Android developer</strong>. 
-          Or furthermore, I could be my attitude to software production, therefore a <em>60fps</em> and <em>stunning UI</em> seeker.
-        </h5>
-      </section>
-      <section>
-        <h3>Contacts</h3>
-        <h6>Bla bla bla</h6>
-      </section>
-    </div>
-  </article>
-
-  <article class="ethos">
-    <div class="container">
-      <section>
-        <h2>Ethos</h2>
-        <h5>
-          Nowadays websites should be previously built for mobile phone and then adapted to desktop ones. Why? Well 
-          I don't believe in living-through-breathing, but I love open-source projects.
-          For instance, you can find this site on github going <a href="https://github.com/andreatulimiero/andreatulimiero.github.io">here</a> .
-          This is both a <strong>CSS</strong> and <strong>JS</strong> <em>framework-free</em>, <em>Vanilla</em> site so feel free to take whatever you like.
-          Hope it will inspire both your coder and designer side.
-        </h5>
-      </section>
-    </div>
-  </article>
-
-  <article class="works">
-    <div class="container">
-      <section>
-        <h2>Works</h2>
-        <div class="works-container"> 
-          <div class="work-container">
-            <div class="work hidden"></div>
+      <!-- Mobile menu -->
+      <div class="mobile">
+        <div class="top-bar idle">
+          <div class="background"></div>
+          <i id="menu-icon">
+            <svg version="1.1" viewbox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/></svg>
+          </i>     
+          <div class="profile-image"></div>   
+        </div>
+        <div class="side-menu">
+          <div class="profile-container">
+            <div class="profile-image"></div>
+            <span>Andrea Tulimiero</span>
           </div>
-          <div class="work-container">
-            <div class="work hidden"></div>
-          </div>
-          <div class="work-container">
-            <div class="work hidden"></div>
-          </div>
-          <div class="work-container">
-            <div class="work hidden"></div>
-          </div>
-          <div class="work-container">
-            <div class="work hidden"></div>
-          </div>
-          <div class="work-container">
-            <div class="work hidden"></div>
-          </div>
-          <div class="work-container">
-            <div class="work hidden"></div>
-          </div>
-          <div class="work-container">
-            <div class="work hidden"></div>
-          </div>
-          <div class="work-container">
-            <div class="work hidden"></div>
-          </div>
-          <div class="work-container">
-            <div class="work hidden"></div>
+          <div class="titles">
+            <span class="home" data-article="home">Home</span>
+            <span class="ethos" data-article="ethos">Ethos</span>
+            <span class="works" data-article="works">Works</span>
           </div>
         </div>
-      </section>
-    </div>
-  </article>
+      </div>
+    </header>
 
+    <article class="home">
+      <div class="container card">
+        <section>
+          <div class="profile-image loading-idle"></div>
+        </section>
+        <section class="profile-description">
+          <h2 class="loading-idle">Who I am</h2>
+          <h5 class="loading-idle">
+            My name is <strong class="name">Andrea Tulimiero</strong>, and I'm a <strong>19</strong>-year-old guy located in Rome.<br/>
+            I could be what I study, so a <strong>Computer Engineer</strong>, or what 
+            I'm passionate about, hence a <strong>Full-Stack web</strong> and <strong>Android developer</strong>. 
+            Or furthermore, I could be my attitude to software production, therefore a <em>60fps</em> and <em>stunning UI</em> seeker.
+          </h5>
+        </section>
+        <section>
+          <h3 class="loading-idle">Contacts</h3>
+          <h6></h6>
+        </section>
+      </div>
+    </article>
+
+    <article class="ethos">
+      <div class="container">
+        <section>
+          <h2>Ethos</h2>
+          <h5>
+            Nowadays websites should be previously built for mobile phone and then adapted to desktop ones. Why? Well 
+            I don't believe in living-through-breathing, but I love open-source projects.
+            For instance, you can find this site on github going <a href="https://github.com/andreatulimiero/andreatulimiero.github.io">here</a> .
+            This is both a <strong>CSS</strong> and <strong>JS</strong> <em>framework-free</em>, <em>Vanilla</em> site so feel free to take whatever you like.
+            Hope it will inspire both your coder and designer side.
+          </h5>
+        </section>
+      </div>
+    </article>
+
+    <article class="works">
+      <div class="container">
+        <section>
+          <h2>Works</h2>
+          <div class="works-container"> 
+            <div class="work-container">
+              <div class="work hidden"></div>
+            </div>
+            <div class="work-container">
+              <div class="work hidden"></div>
+            </div>
+            <div class="work-container">
+              <div class="work hidden"></div>
+            </div>
+            <div class="work-container">
+              <div class="work hidden"></div>
+            </div>
+            <div class="work-container">
+              <div class="work hidden"></div>
+            </div>
+            <div class="work-container">
+              <div class="work hidden"></div>
+            </div>
+            <div class="work-container">
+              <div class="work hidden"></div>
+            </div>
+            <div class="work-container">
+              <div class="work hidden"></div>
+            </div>
+            <div class="work-container">
+              <div class="work hidden"></div>
+            </div>
+            <div class="work-container">
+              <div class="work hidden"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </article>
+   </div>
   <!--<span class="test" style="position: absolute; z-index: 999; width: 100%; height: 2px; background-color: black; <top:978></top:978>px"></span>-->
  </body>
 </html>
