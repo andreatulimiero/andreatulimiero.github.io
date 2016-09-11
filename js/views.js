@@ -55,6 +55,7 @@ function initMobileMenu(){
   var topBar = document.querySelector('.mobile .top-bar');
   menu.height = parseInt( window.getComputedStyle(topBar).height );
   var topBarThreshold = document.querySelector('.home section:first-of-type').offsetTop;
+  var closingThreshold = window.innerWidth / 3;
   var openMenu = function () {
     menuElement.classList.add('opened');
     topBar.classList.add('idle');
@@ -101,7 +102,7 @@ function initMobileMenu(){
     if( !menuElement.classList.contains('opened') ) return;
     menuElement.style.transform = '';
     menuElement.style.transition = '';
-    if( deltaX < -150 ) closemenuElement();
+    if( Math.abs( deltaX ) > closingThreshold ) closeMenu();
   });
   titles.querySelectorAll('span').forEach( title => {
     title.addEventListener('click', e => {
