@@ -131,12 +131,13 @@ function initArticles(){
   }, {passive: false});
 }
 
-  /* Single articles */
+/* Single articles */
 function initHome(){
   var article = document.querySelector('article.home');
   article.style.height = window.getComputedStyle(article).height;
-  var articleContent = article.querySelector('.container');
-  articleContent.style.height = Utils.toPx( parseFloat(article.height) + 32 );
+  var articleContainer = article.querySelector('.container');
+  articleContainer.style.height = Utils.toPx( parseFloat(article.style.height) + 32 );
+  console.log(articleContainer.style.height);
 }
 
 function initWorks(){
