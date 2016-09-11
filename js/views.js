@@ -134,10 +134,10 @@ function initArticles(){
 /* Single articles */
 function initHome(){
   var article = document.querySelector('article.home');
-  article.style.height = window.getComputedStyle(article).height;
   var articleContainer = article.querySelector('.container');
-  articleContainer.style.height = Utils.toPx( parseFloat(article.style.height) + 32 );
-  console.log(articleContainer.style.height);
+  console.log(window.getComputedStyle(articleContainer).height);
+  article.style.height = window.getComputedStyle(articleContainer).height;
+  articleContainer.style.height = Utils.toPx( parseFloat(article.style.height) + (mobileDevice ? 32 : 64) );
 }
 
 function initWorks(){
