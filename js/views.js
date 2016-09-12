@@ -38,7 +38,7 @@ function initDesktopMenu(){
     } else {
       bar.style.transform = 'translateX('+ (articleTitle.offsetLeft - barStartX) +'px)';
       if( articleTitle.classList.contains('ethos') ) target = 'ethos';
-      else if( articleTitle.classList.contains('works') ) target = 'works';
+      else if( articleTitle.classList.contains('projects') ) target = 'projects';
     }
   };
   titles.querySelectorAll('span').forEach( titlesItem => {
@@ -114,7 +114,7 @@ function initMobileMenu(){
 /* Articles */
 function initArticles(){
   initHome();
-  initWorks();
+  initprojects();
   var scrollUpdate = {
     isHanging: false,
     intervalId: undefined,
@@ -129,8 +129,8 @@ function initArticles(){
     if( pageIsScrolling ) return;
     if( scrollUpdate.isHanging ) return;
     scrollUpdate.hang();
-    if( window.scrollY >= document.querySelector('article.works').offsetTop - menu.height ) 
-      menu.highlightTitle( document.querySelector('.titles .works') );
+    if( window.scrollY >= document.querySelector('article.projects').offsetTop - menu.height ) 
+      menu.highlightTitle( document.querySelector('.titles .projects') );
     else if ( window.scrollY >= document.querySelector('article.ethos').offsetTop - menu.height ) 
       menu.highlightTitle( document.querySelector('.titles .ethos') );
     else 
@@ -147,39 +147,39 @@ function initHome(){
   articleContainer.style.height = Utils.toPx( parseFloat(article.style.height) + (mobileDevice ? 32 : 64) );
 }
 
-function initWorks(){
-  var worksContainer = document.querySelectorAll('article.works .works-container .work-container');
-  if( !worksContainer.length ) return;
-  var worksRevealer = {
-    works: [],
+function initprojects(){
+  var projectsContainer = document.querySelectorAll('article.projects .projects-container .project-container');
+  if( !projectsContainer.length ) return;
+  var projectsRevealer = {
+    projects: [],
     shouldCheck: true,
     checkReveal : function() {
       if( !this.shouldCheck ) return;
-      this.works.forEach( work => {
+      this.projects.forEach( project => {
         this.shouldCheck = false;
-        if(work.classList.contains('hidden')){
+        if(project.classList.contains('hidden')){
           this.shouldCheck = true;
-          var offsetTop = work.offsetTop;
-          var height = parseInt( window.getComputedStyle(work).height );
+          var offsetTop = project.offsetTop;
+          var height = parseInt( window.getComputedStyle(project).height );
           var visibleArea = window.innerHeight + window.scrollY;
           if( visibleArea > offsetTop + height/3 ){
-            var offsetLeft = work.offsetLeft;
-            var width = parseFloat( window.getComputedStyle(work).height );
+            var offsetLeft = project.offsetLeft;
+            var width = parseFloat( window.getComputedStyle(project).height );
             var position = parseInt( offsetLeft / width );
-            work.style.transitionDelay = Utils.toSeconds( position * .1 );
-            work.classList.remove('hidden');
+            project.style.transitionDelay = Utils.toSeconds( position * .1 );
+            project.classList.remove('hidden');
           }
         }
       });
     }
   };
-  worksContainer.forEach( workContainer => {
-    var width = window.getComputedStyle(workContainer).width;
-    workContainer.style.height = width;
-    worksRevealer.works.push(workContainer.querySelector('.work'));
+  projectsContainer.forEach( projectContainer => {
+    var width = window.getComputedStyle(projectContainer).width;
+    projectContainer.style.height = width;
+    projectsRevealer.projects.push(projectContainer.querySelector('.project'));
   });
-  worksRevealer.checkReveal();
-  window.addEventListener('scroll', e => { worksRevealer.checkReveal(); }, {'passive': true});
+  projectsRevealer.checkReveal();
+  window.addEventListener('scroll', e => { projectsRevealer.checkReveal(); }, {'passive': true});
 }
 
 /* Views Utils */

@@ -1,5 +1,5 @@
 /* Fonts */
-@import 'https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu:300';
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400';
 
 html, body{
   margin: 0;
@@ -344,23 +344,24 @@ article.home .container section h2{
   margin-top: 40px;
   margin-bottom: 0;
   font-size: 1.4em;
+  color: #393e41;
 }
 
 article.home .container section h3{
   margin-top: 16px;
   margin-bottom: 0;
-  font-size: 1.4em;
+  font-size: 1.1em;
 }
 
 article.home .container section h5{
   margin-top: 16px;
   margin-bottom: 0;
-  color: #006158;
-  max-width: 500px;
+  color: #393e41;
+  max-width: 550px;
   line-height: 1.8em;
   letter-spacing: .3px;
-  font-weight: 400;
-  font-size: 1em;
+  font-weight: 300;
+  font-size: 1.2em;
 }
 
 article.home .container section h6{
@@ -375,7 +376,7 @@ article.home .container section h6{
   
   article.home .container section h2{
     margin-top: 50px;
-    font-size: 1.6em;
+    font-size: 1.4em;
   }
 
   article.home .container section h5{
@@ -427,55 +428,39 @@ article.ethos .container h5 a{
   }
 
   article.ethos .container h2{
-    font-size: xx-large
+    font-size: 1.6em;
   }
 }
 
-/* Works */
-article.works{
+/* projects */
+article.projects{
   background-color: white;
 }
 
-article.works .container{
+article.projects .container{
   width: 90%;
   max-width: 1800px;
 }
 
-article.works .container h2{
+article.projects .container h2{
   text-align: center;
+  font-size: 1.4em;
+  color: #393e41;
 }
 
-@media (min-width: 768px){
-  article.works .container h2{
-    font-size: 1.6em
-  }
-}
-
-article.works .container .works-container{
+article.projects .container .projects-container{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
 
-article.works .container .works-container .work-container{
+article.projects .container .projects-container .project-container{
   height: 90px;
   flex-basis: 100%;
 }
 
-@media (min-width: 768px) and (max-width: 1440px){
-  article.works .container .works-container .work-container{  
-    flex-basis: 50%;
-  }
-}
-
-@media (min-width: 1441px){
-  article.works .container .works-container .work-container{
-    flex-basis: 33.3%;
-  }
-}
-
-article.works .container .works-container .work-container .work{
+article.projects .container .projects-container .project-container .project{
   width: 80%;
   height: 80%;
   margin-top: 10%;
@@ -484,9 +469,40 @@ article.works .container .works-container .work-container .work{
   transition: all .4s ease-out;
 }
 
-article.works .container .works-container .work-container .work.hidden{
+article.projects .container .projects-container .project-container .project.hidden{
   opacity: 0;
   transform: translateY(64px);
+}
+
+@media (min-width: 768px){
+  article.projects .container h2{
+    font-size: 1.6em;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1440px){
+  article.projects .container .projects-container .project-container{  
+    flex-basis: 50%;
+  }
+}
+
+@media (min-width: 1441px){
+  article.projects .container .projects-container .project-container{
+    flex-basis: 33.3%;
+  }
+}
+
+footer{
+  width: 100%;
+  padding: 32px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer span{
+  color: #393e41;
 }
 
 /* Elements */
