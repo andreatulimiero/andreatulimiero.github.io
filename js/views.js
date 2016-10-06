@@ -129,9 +129,10 @@ function initArticles(){
     if( pageIsScrolling ) return;
     if( scrollUpdate.isHanging ) return;
     scrollUpdate.hang();
-    if( window.scrollY >= document.querySelector('article.projects').offsetTop - menu.height ) 
+    var windowScrollY = Math.round(window.scrollY);
+    if( windowScrollY >= document.querySelector('article.projects').offsetTop - menu.height ) 
       menu.highlightTitle( document.querySelector('.titles .projects') );
-    else if ( window.scrollY >= document.querySelector('article.ethos').offsetTop - menu.height ) 
+    else if ( windowScrollY >= document.querySelector('article.ethos').offsetTop - menu.height ) 
       menu.highlightTitle( document.querySelector('.titles .ethos') );
     else 
       menu.highlightTitle( document.querySelector('.titles .home') );
