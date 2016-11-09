@@ -6,7 +6,6 @@ var menu = {
 }
 
 function OnPageLoadFinished(){
-  return;
   document.querySelectorAll('.loading-idle').forEach( item => {
     item.classList.remove('loading-idle');
   });
