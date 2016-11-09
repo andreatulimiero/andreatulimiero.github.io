@@ -8,56 +8,6 @@ html, body{
   background-color: #F5F5F5;
 }
 
- /* Splash element */
-div.splash-container{
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  z-index: 5;
-  opacity: 0;
-}
-
-div.splash-container.loading-idle{
-  opacity: 1;
-}
-
-@keyframes splash-animation{
-  0%{ transform: scaleX(0); }
-  50%{ transform: scaleX(1); transform-origin: left;  }
-  51%{ transform: scaleX(1); transform-origin: right;  }
-  100%{ transform: scaleX(0); transform-origin: right; }
-}
-
-div.splash-container .splash-element-burger{
-  background: lightgray;
-  border-radius: 2px;
-  padding-top: 16px;
-  padding-bottom: 16px;
-}
-
-div.splash-container .splash-element-burger .splash-element-bg{
-  background-color: darkgray;
-  height: 3px;
-  widows: 200px;
-}
-
-div.splash-container .splash-element-burger .splash-element{
-  height: 3px;
-  width: 200px;
-  background-color: white;
-  transform-origin: left;
-  animation-name: splash-animation;
-  animation-duration: 1.5s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-}
-
 div.main-container.loading-idle{
   opacity: 0;
 }
