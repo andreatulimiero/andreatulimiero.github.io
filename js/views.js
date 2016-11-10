@@ -36,7 +36,9 @@ function initDesktopMenu(){
       bar.style.transform = 'translateX(0)';
       target = 'home';
     } else {
-      bar.style.transform = 'translateX('+ (articleTitle.offsetLeft - barStartX) +'px)';
+      let scaleFactor = articleTitle.offsetWidth / bar.offsetWidth;
+      bar.style.transformOrigin = 'left';
+      bar.style.transform = 'translateX('+ (articleTitle.offsetLeft - barStartX) +'px) scaleX('+ scaleFactor +')';
       if( articleTitle.classList.contains('ethos') ) target = 'ethos';
       else if( articleTitle.classList.contains('projects') ) target = 'projects';
     }
