@@ -55,7 +55,7 @@ function initMobileMenu(){
   var menuElement = document.querySelector('.mobile .side-menu');
   var titles = menuElement.querySelector('.mobile .side-menu .titles');
   var topBar = document.querySelector('.mobile .top-bar');
-  menu.height = parseInt( window.getComputedStyle(topBar).height );
+  menu.height = parseInt( window.getComputedStyle(topBar.querySelector('.background')).height );
   var topBarThreshold = document.querySelector('.home section:first-of-type').offsetTop;
   var closingThreshold = window.innerWidth / 3;
   var openMenu = function () {
