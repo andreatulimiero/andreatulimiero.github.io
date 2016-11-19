@@ -1,5 +1,5 @@
 /* menuElement */
-var menu = {
+let menu = {
   height: 0,
   selectArticle: undefined,
   highlightTitle: undefined
@@ -17,11 +17,11 @@ function initMenu(){
 }
 
 function initDesktopMenu(){
-  var menuElement = document.querySelector('.desktop .menu');
+  let menuElement = document.querySelector('.desktop .menu');
   menu.height = parseInt( window.getComputedStyle(menuElement).height );
-  var titles =  menuElement.querySelector('.titles');
-  var bar = menuElement.querySelector('.bar');
-  var barStartX = parseInt( window.getComputedStyle(titles).marginLeft );
+  let titles =  menuElement.querySelector('.titles');
+  let bar = menuElement.querySelector('.bar');
+  let barStartX = parseInt( window.getComputedStyle(titles).marginLeft );
   bar.style.width = titles.querySelector('span').offsetWidth + 'px';
   bar.style.left = barStartX +'px';
   menu.selectArticle = articleTitle => {
@@ -31,7 +31,7 @@ function initDesktopMenu(){
   menu.highlightTitle = articleTitle => {
     titles.querySelector('.selected').classList.remove('selected');
     articleTitle.classList.add('selected');
-    var target = '';
+    let target = '';
     if( articleTitle.classList.contains('home') ){
       bar.style.transform = 'translateX(0)';
       target = 'home';
@@ -51,19 +51,22 @@ function initDesktopMenu(){
 }
 
 function initMobileMenu(){
-  var menuIcon = document.querySelector('#menu-icon');
-  var menuElement = document.querySelector('.mobile .side-menu');
-  var titles = menuElement.querySelector('.mobile .side-menu .titles');
-  var topBar = document.querySelector('.mobile .top-bar');
+  let mainContainer = document.querySelector('.main-container');
+  let menuIcon = document.querySelector('#menu-icon');
+  let menuElement = document.querySelector('.mobile .side-menu');
+  let titles = menuElement.querySelector('.mobile .side-menu .titles');
+  let topBar = document.querySelector('.mobile .top-bar');
   menu.height = parseInt( window.getComputedStyle(topBar.querySelector('.background')).height );
-  var topBarThreshold = document.querySelector('.home section:first-of-type').offsetTop;
-  var closingThreshold = window.innerWidth / 3;
-  var openMenu = function () {
+  let topBarThreshold = document.querySelector('.home section:first-of-type').offsetTop;
+  let closingThreshold = window.innerWidth / 3;
+  let openMenu = function () {
     menuElement.classList.add('opened');
     topBar.classList.add('idle');
+    mainContainer.classList.add('obscured');
   };
-  var closeMenu = function(){ 
+  let closeMenu = function(){ 
     menuElement.classList.remove('opened');
+    mainContainer.classList.remove('obscured');
     if( document.querySelector('body').scrollTop > topBarThreshold ) topBar.classList.remove('idle');
   };
   menu.selectArticle = articleTitle => {
@@ -89,7 +92,7 @@ function initMobileMenu(){
   document.querySelector('body').addEventListener('click', e => {
     if( !checkHit(e, menuElement) && !checkHit(e, menuIcon) ) closeMenu();
   });
-  var startX, deltaX;
+  let startX, deltaX;
   document.querySelector('body').addEventListener('touchstart', e => {
     startX = parseInt( e.touches[0].pageX );
   });
@@ -117,7 +120,7 @@ function initMobileMenu(){
 function initArticles(){
   initHome();
   initprojects();
-  var scrollUpdate = {
+  let scrollUpdate = {
     isHanging: false,
     intervalId: undefined,
     waitTime: 100,
@@ -131,7 +134,7 @@ function initArticles(){
     if( pageIsScrolling ) return;
     if( scrollUpdate.isHanging ) return;
     scrollUpdate.hang();
-    var windowScrollY = Math.round(window.scrollY);
+    let windowScrollY = Math.round(window.scrollY);
     if( windowScrollY >= document.querySelector('article.projects').offsetTop - menu.height ) 
       menu.highlightTitle( document.querySelector('.titles .projects') );
     else if ( windowScrollY >= document.querySelector('article.ethos').offsetTop - menu.height ) 
@@ -144,16 +147,16 @@ function initArticles(){
 
 /* Single articles */
 function initHome(){
-  var article = document.querySelector('article.home');
-  var articleContainer = article.querySelector('.container');
+  let article = document.querySelector('article.home');
+  let articleContainer = article.querySelector('.container');
   article.style.height = window.getComputedStyle(articleContainer).height;
   articleContainer.style.height = Utils.toPx( parseFloat(article.style.height) + (mobileDevice ? 32 : 64) );
 }
 
 function initprojects(){
-  var projectsContainer = document.querySelectorAll('article.projects .projects-container .project-container');
+  let projectsContainer = document.querySelectorAll('article.projects .projects-container .project-container');
   if( !projectsContainer.length ) return;
-  var projectsRevealer = {
+  let projectsRevealer = {
     projects: [],
     shouldCheck: true,
     checkReveal : function() {
@@ -162,13 +165,13 @@ function initprojects(){
         this.shouldCheck = false;
         if(project.classList.contains('hidden')){
           this.shouldCheck = true;
-          var offsetTop = project.offsetTop;
-          var height = parseInt( window.getComputedStyle(project).height );
-          var visibleArea = window.innerHeight + window.scrollY;
+          let offsetTop = project.offsetTop;
+          let height = parseInt( window.getComputedStyle(project).height );
+          let visibleArea = window.innerHeight + window.scrollY;
           if( visibleArea > offsetTop + height/3 ){
-            var offsetLeft = project.offsetLeft;
-            var width = parseFloat( window.getComputedStyle(project).height );
-            var position = parseInt( offsetLeft / width );
+            let offsetLeft = project.offsetLeft;
+            let width = parseFloat( window.getComputedStyle(project).height );
+            let position = parseInt( offsetLeft / width );
             project.style.transitionDelay = Utils.toSeconds( position * .1 );
             project.classList.remove('hidden');
           }
@@ -177,7 +180,7 @@ function initprojects(){
     }
   };
   projectsContainer.forEach( projectContainer => {
-    var width = window.getComputedStyle(projectContainer).width;
+    let width = window.getComputedStyle(projectContainer).width;
     projectContainer.style.height = width;
     projectsRevealer.projects.push(projectContainer.querySelector('.project'));
   });
@@ -186,7 +189,7 @@ function initprojects(){
 }
 
 /* Views Utils */
-var Utils = {
+let Utils = {
   toPx: pixels => {
     return pixels + 'px';
   },
@@ -196,25 +199,25 @@ var Utils = {
 }
 
 function checkHit(event, target){
-  for( var element = event.target; element.tagName != 'HTML'; element = element.parentNode ){
+  for( let element = event.target; element.tagName != 'HTML'; element = element.parentNode ){
     if( element == target )
       return true;
   }
   return false;
 }
 // Scrolling
-var pageIsScrolling = false;
-var animationFrameId;
+let pageIsScrolling = false;
+let animationFrameId;
 function smoothScrollTo(target){
   if( pageIsScrolling ) cancelAnimationFrame(animationFrameId);
   pageIsScrolling = true;
-  var body = document.querySelector('body');
-  var scrollDelta = target.offsetTop - (menu.height + body.scrollTop);
+  let body = document.querySelector('body');
+  let scrollDelta = target.offsetTop - (menu.height + body.scrollTop);
   if( !scrollDelta ) return;
-  var iteration = 0;
-  var from = body.scrollTop;
+  let iteration = 0;
+  let from = body.scrollTop;
   duration = 18;
-  var scroll = function() {
+  let scroll = function() {
     if( iteration >= duration ) {
       body.scrollTop = from + scrollDelta;
       pageIsScrolling = false;
