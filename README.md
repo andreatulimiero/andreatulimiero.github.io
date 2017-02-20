@@ -1,5 +1,5 @@
 # Intentions
-In a world of framework only sites, I'd like to rediscover the power of the Vanilla tools provided by the Web. <br/>
+In a world of framework-only sites, I'd like to rediscover the power of the Vanilla tools provided by the Web. <br/>
 
 # Description
 Portfolio website made only of the goods of the Web (<i>Vanilla</i>): <b>HTML5, CSS3 and JS</b>. <br/>
