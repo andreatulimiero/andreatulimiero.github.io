@@ -14,7 +14,7 @@ email: tulimiero.andrea@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   My name is Andrea and I'm a Computer Science student.
   I deal with advanced computer programming but I delight
-  myself with UX/UI as well 
+  myself with CTFs and UX/UI as well 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://andreatulimiero.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: andreatulimiero
