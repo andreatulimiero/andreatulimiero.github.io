@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Competitive programming as Sudokus"
+title:  "Competitive programming as Sudoku"
 date:   2018-04-17 +0200
 categories: articles
 ---
