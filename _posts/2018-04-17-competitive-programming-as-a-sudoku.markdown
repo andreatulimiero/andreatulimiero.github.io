@@ -4,6 +4,10 @@ title:  "Competitive programming as a Sudoku"
 date:   2018-04-17 +0200
 categories: articles
 ---
+# TL;DR
+Solving competitive programming challenges everyday will help you recognise algorithms’ patterns in order to be able to craft better code in less time   
+
+# The whole story
 *Competitive programming is a mind sport in which participants are required to write computer programs to solve a set of logical and mathematical problems - Wikipedia*
 
 But what does it mean that you should take it as a *Sudoku*? <br>
