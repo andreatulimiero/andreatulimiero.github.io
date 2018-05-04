@@ -5,13 +5,13 @@ date:   2018-04-17 +0200
 categories: articles
 ---
 # TL;DR
-Solving competitive programming challenges everyday will help you recognise common algorithms’ patterns in order to be able to craft **better code** in **less time**   
+Solving competitive programming challenges every day will help you recognize common algorithms’ patterns in order to be able to craft **better code** in **less time**   
 
 # The whole story
 *Competitive programming is a mind sport in which participants are required to write computer programs to solve a set of logical and mathematical problems - Wikipedia*
 
 But what does it mean that you should take it as a *Sudoku*? <br>
-Most likely you won't participate to the World Championships of competitive programming, but you can see these challenges as a stimulating game to:
+Most likely you won't participate in the World Championships of competitive programming, but you can see these challenges as a stimulating game to:
 - Enhance your problem-solving skills
 - Learn and recognize common **algorithms' patterns**
 
@@ -20,9 +20,9 @@ The cool thing is that in case your solution is not smart enough, **you're guara
 Nobody is going to tell you << there's a better approach you can take to solve this problem >>.  
 
 Once you've gone through some of these challenges, you'll start recognizing **patterns** in the problem you face, and those patterns will **help** you **quickly understand** how that problem can be solved, and how it can be solved in an **efficient way**.  
-This is the same excalation you would experience solving Sudoku's challenges for some time --- your vision becomes kind of sharper while trying to find the right place to insert a new number.  
+This is the same escalation you would experience solving Sudoku's challenges for some time --- your vision becomes kind of sharper while trying to find the right place to insert a new number.  
 
-This means you will not only craft **better code**, but also in **less time**
+This means you will not only craft **better code** but also in **less time**
 
 # Talking about numbers
 You won't clearly realize every single algorithm in the most efficient way, but sometimes building a solution that requires O(n) instead of O(n<sup>2</sup>) requires you only 5 minutes more. 
@@ -31,5 +31,5 @@ Let's suppose you're prototyping a function with an internal algorithm that work
 Once you ran it 20 times you pass from 30 minutes to 5.5 minutes
 
 # In conclusion
-My suggest is to make solving these challenging problem a habit.  
-A great platform to train yourself in your spare time is HackerRank, in which you can choose from a plethora of problems divided by category and difficulty, so that you can get started from the easiest ones --- the same way you would do with Sudoku ;)
+My suggestion is to make solving these challenging problem a habit.  
+A great platform to train yourself in your spare time is HackerRank, in which you can choose from a plethora of problems divided by category and difficulty so that you can get started from the easiest ones --- the same way you would do with Sudoku ;)
