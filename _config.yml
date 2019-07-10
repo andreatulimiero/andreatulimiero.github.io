@@ -12,11 +12,9 @@
 title: Andrea Tulimiero
 email: tulimiero.andrea@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  My name is Andrea and I'm a Computer Science student at La Sapienza University in Rome.
-  I deal with advanced computer programming but I delight
-  myself with CTFs and UX/UI as well 
+  My name is Andrea and I’m a Computer Science student at ETH University of Zurich. I deal with advanced computer programming but I delight myself with CTFs and UX/UI as well
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://andreatulimiero.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://andreatulimiero.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: andreatulimiero
 github_username:  andreatulimiero
 
